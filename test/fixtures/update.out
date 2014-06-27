@@ -1,0 +1,42 @@
+Atteint http://packages.holusion.net wheezy Release.gpg
+Atteint http://packages.holusion.net wheezy Release
+Atteint http://ftp.fr.debian.org wheezy Release.gpg
+Réception de : 1 http://dl.google.com stable Release.gpg [198 B]
+Réception de : 2 http://security.debian.org wheezy/updates Release.gpg [836 B]
+Réception de : 3 http://ftp.fr.debian.org wheezy-updates Release.gpg [836 B]
+Réception de : 4 http://dl.google.com stable Release [1 347 B]
+Atteint http://ftp.fr.debian.org wheezy Release
+Réception de : 5 http://security.debian.org wheezy/updates Release [102 kB]
+Réception de : 6 http://ftp.fr.debian.org wheezy-updates Release [124 kB]
+Atteint http://packages.holusion.net wheezy/main amd64 Packages
+Atteint http://packages.holusion.net wheezy/contrib amd64 Packages
+Atteint http://packages.holusion.net wheezy/non-free amd64 Packages
+Atteint http://packages.holusion.net wheezy/extras amd64 Packages
+Réception de : 7 http://dl.google.com stable/main amd64 Packages [1 230 B]
+Atteint http://ftp.fr.debian.org wheezy/main Sources
+Réception de : 8 http://security.debian.org wheezy/updates/main Sources [116 kB]
+Atteint http://ftp.fr.debian.org wheezy/main amd64 Packages
+Atteint http://ftp.fr.debian.org wheezy/main Translation-fr
+Atteint http://ftp.fr.debian.org wheezy/main Translation-en
+Réception de : 9 http://ftp.fr.debian.org wheezy-updates/main Sources [4 478 B]
+Atteint http://ftp.fr.debian.org wheezy-updates/main amd64 Packages/DiffIndex
+Réception de : 10 http://security.debian.org wheezy/updates/main amd64 Packages [189 kB]
+Ign http://dl.google.com stable/main Translation-fr_FR
+Ign http://dl.google.com stable/main Translation-fr
+Ign http://dl.google.com stable/main Translation-en
+Ign http://packages.holusion.net wheezy/contrib Translation-fr_FR
+Ign http://packages.holusion.net wheezy/contrib Translation-fr
+Ign http://packages.holusion.net wheezy/contrib Translation-en
+Ign http://packages.holusion.net wheezy/extras Translation-fr_FR
+Ign http://packages.holusion.net wheezy/extras Translation-fr
+Ign http://packages.holusion.net wheezy/extras Translation-en
+Ign http://packages.holusion.net wheezy/main Translation-fr_FR
+Atteint http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+Réception de : 11 http://security.debian.org wheezy/updates/main Translation-en [105 kB]
+Ign http://packages.holusion.net wheezy/main Translation-fr
+Ign http://packages.holusion.net wheezy/main Translation-en
+Ign http://packages.holusion.net wheezy/non-free Translation-fr_FR
+Ign http://packages.holusion.net wheezy/non-free Translation-fr
+Ign http://packages.holusion.net wheezy/non-free Translation-en
+645 ko réceptionnés en 3s (210 ko/s)
+Lecture des listes de paquets...

@@ -1,0 +1,10 @@
+stdout: NOTE: Ceci n'est qu'une simulation !
+      apt-get a besoin des privilèges du superutilisateur
+      pour pouvoir vraiment fonctionner.
+      Veuillez aussi noter que le verrouillage est désactivé,
+      et la situation n'est donc pas forcément représentative
+      de la réalité !
+Lecture des listes de paquets... Fait
+Construction de l'arbre des dépendances...
+Lecture des informations d'état... Fait
+0 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.

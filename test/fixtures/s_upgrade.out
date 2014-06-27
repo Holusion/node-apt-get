@@ -1,0 +1,10 @@
+Lecture des listes de paquets...
+Construction de l'arbre des dépendances...
+Lecture des informations d'état...
+Les paquets suivants seront mis à jour :
+  gnupg gpgv
+2 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.
+Inst gpgv [1.4.12-7+deb7u3] (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
+Conf gpgv (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
+Inst gnupg [1.4.12-7+deb7u3] (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
+Conf gnupg (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
