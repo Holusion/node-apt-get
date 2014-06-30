@@ -2,6 +2,10 @@
 	"name": "node-apt-get",
 	"version": "0.0.1",
 	"private": false,
+	"homepage":"https://github.com/Holusion/node-apt-get",
+	"keywords":["apt","apt-get","update","upgrade","debian","ubuntu"],
+	"author":"Sebastien Dumetz <s.dumetz@holusion.com> (https://github.com/klepthys)",
+	"contributors":["Maxime Chaveroche", "Kenza Khamaily"]
 	"scripts": {
 		"start": "NODE_ENV=development ./node_modules/.bin/supervisor app.js",
 		"test": "./node_modules/.bin/mocha --reporter spec"
