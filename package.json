@@ -1,5 +1,5 @@
 {
-	"name": "node-apt-get",
+	"name": "apt-get",
 	"version": "0.0.1",
 	"private": false,
 	"homepage":"https://github.com/Holusion/node-apt-get",
