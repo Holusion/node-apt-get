@@ -1,10 +1,26 @@
-Lecture des listes de paquets...
-Construction de l'arbre des dépendances...
-Lecture des informations d'état...
+Lecture des listes de paquets... Fait
+Construction de l'arbre des dépendances
+Lecture des informations d'état... Fait
+Calcul de la mise à jour... Fait
+Les paquets suivants seront ENLEVÉS :
+  libtirpc1 nfs-common rpcbind
 Les paquets suivants seront mis à jour :
-  gnupg gpgv
-2 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.
-Inst gpgv [1.4.12-7+deb7u3] (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
-Conf gpgv (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
-Inst gnupg [1.4.12-7+deb7u3] (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
-Conf gnupg (1.4.12-7+deb7u4 Debian-Security:7.0/stable [amd64])
+  dbus dbus-x11 libc-dev-bin libc6 libc6-dev libdbus-1-3 locales
+7 mis à jour, 0 nouvellement installés, 3 à enlever et 0 non mis à jour.
+Remv nfs-common [1:1.2.6-4]
+Remv rpcbind [0.2.0-8]
+Remv libtirpc1 [0.2.2-5]
+Inst libc6-dev [2.19-1] (2.19-4 holusion apt repository:packages.holusion.net [amd64]) []
+Inst libc-dev-bin [2.19-1] (2.19-4 holusion apt repository:packages.holusion.net [amd64]) []
+Inst libc6 [2.19-1] (2.19-4 holusion apt repository:packages.holusion.net [amd64])
+Conf libc6 (2.19-4 holusion apt repository:packages.holusion.net [amd64])
+Inst libdbus-1-3 [1.6.8-1+deb7u1] (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])
+Inst locales [2.19-1] (2.19-4 holusion apt repository:packages.holusion.net [all])
+Inst dbus [1.6.8-1+deb7u1] (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])
+Inst dbus-x11 [1.6.8-1+deb7u1] (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])
+Conf libc-dev-bin (2.19-4 holusion apt repository:packages.holusion.net [amd64])
+Conf libc6-dev (2.19-4 holusion apt repository:packages.holusion.net [amd64])
+Conf libdbus-1-3 (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])
+Conf locales (2.19-4 holusion apt repository:packages.holusion.net [all])
+Conf dbus (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])
+Conf dbus-x11 (1.6.8-1+deb7u3 Debian-Security:7.0/stable [amd64])

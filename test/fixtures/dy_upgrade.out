@@ -1,12 +1,12 @@
-Lecture des listes de paquets...
-Construction de l'arbre des dépendances...
-Lecture des informations d'état...
+Lecture des listes de paquets... Fait
+Construction de l'arbre des dépendances
+Lecture des informations d'état... Fait
+Calcul de la mise à jour... Fait
+Les paquets suivants seront ENLEVÉS :
+  libtirpc1 nfs-common rpcbind
 Les paquets suivants seront mis à jour :
-  gnupg gpgv
-2 mis à jour, 0 nouvellement installés, 0 à enlever et 0 non mis à jour.
-Il est nécessaire de prendre 2 180 ko dans les archives.
-Après cette opération, 375 ko d'espace disque supplémentaires seront utilisés.
-Réception de : 1 http://security.debian.org/ wheezy/updates/main gpgv amd64 1.4.12-7+deb7u4 [227 kB]
-Réception de : 2 http://security.debian.org/ wheezy/updates/main gnupg amd64 1.4.12-7+deb7u4 [1 954 kB]
-2 180 ko réceptionnés en 9s (230 ko/s)
+  dbus dbus-x11 libc-dev-bin libc6 libc6-dev libdbus-1-3 locales
+7 mis à jour, 0 nouvellement installés, 3 à enlever et 0 non mis à jour.
+Il est nécessaire de prendre 0 o/11,6 Mo dans les archives.
+Après cette opération, 1 308 ko d'espace disque seront libérés.
 Téléchargement achevé et dans le mode téléchargement uniquement

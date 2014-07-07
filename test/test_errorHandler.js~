@@ -1,6 +1,6 @@
 var fs = require("fs");
 var expect = require('chai').expect;
-var index = require('../errorHandler.js');
+var index = require('../index.js');
 
 describe("test errorHandler", function(){
   it("returns 'Network is unreachable'", function(){
@@ -56,11 +56,6 @@ it("returns 'Another package manager is already running'", function(){
   it("returns 'GPG error'", function(){
     index.errorHandler("GPG error", function(err){
       expect(err).to.deep.equal('GPG error');
-      })
-    })
-  it("returns 'dpkg was interrupted, please try « dpkg --configure -a »'", function(){
-    index.errorHandler("GE: dpkg a été interrompu. Il est nécessaire d'utiliser « dpkg --configure -a » pour corriger le problème.", function(err){
-      expect(err).to.deep.equal('dpkg was interrupted, please try « dpkg --configure -a »');
       })
     })
 })
