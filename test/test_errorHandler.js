@@ -15,9 +15,9 @@ describe("test errorHandler", function(){
       expect(err).to.deep.equal('Permission non accordée');
     })
   })
-it("returns 'Le gestionnaire de paquet est temporairement indisponible'", function(){
+it("returns 'Le gestionnaire de paquet est temporairement indisponible...'", function(){
     aptGetErr.errorHandler("11: Ressource temporairement non disponible", function(err){
-      expect(err).to.deep.equal("Le gestionnaire de paquet est temporairement indisponible");
+      expect(err).to.deep.equal("Le gestionnaire de paquet est temporairement indisponible...");
     })
   })
   it("returns 'Quelques fichiers d'index n'ont pas été trouvés'", function(){
@@ -65,9 +65,9 @@ it("returns 'Le gestionnaire de paquet est temporairement indisponible'", functi
       expect(err).to.deep.equal("dpkg a été interrompu. Il est nécessaire d'utiliser « dpkg --configure -a »");
       })
     })
-  it("returns 'Impossible de récupérer les paquets'", function(){
+  it("returns 'Impossible de récupérer les fichiers d'index ou les paquets'", function(){
     aptGetErr.errorHandler("W: Impossible de récupérer http://ftp.fr.debian.org/debian/dists/wheezy/Release.gpg Ne parvient pas à résoudre « ftp.fr.debian.org »", function(err){
-      expect(err).to.deep.equal("Impossible de récupérer les paquets");
+      expect(err).to.deep.equal("Impossible de récupérer les fichiers d'index ou les paquets");
       })
     })
 })

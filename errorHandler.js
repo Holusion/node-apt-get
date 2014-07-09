@@ -12,8 +12,8 @@ var errors = {"Le téléchargement de quelques fichiers d'index a échoué":"Le 
 'Impossible de récupérer quelques fichiers':"W: Failed to fetch",
 'erreur de GPG':"GPG error",
 "dpkg a été interrompu. Il est nécessaire d'utiliser « dpkg --configure -a »":"dpkg a été interrompu. Il est nécessaire d'utiliser « dpkg --configure -a »",
-"Le gestionnaire de paquet est temporairement indisponible":"11: Ressource temporairement non disponible",
-"Impossible de récupérer les paquets":"Ne parvient pas à résoudre"};
+"Le gestionnaire de paquet est temporairement indisponible...":"11: Ressource temporairement non disponible",
+"Impossible de récupérer les fichiers d'index ou les paquets":"Ne parvient pas à résoudre"};
 
 
 /**
