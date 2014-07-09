@@ -1,5 +1,3 @@
-var aptGet = require('./index.js');
-
 var globalId = ["Lecture des listes de paquets",
 	"Construction de l'arbre des dépendances",
 	"Lecture des informations d'état",
@@ -15,6 +13,31 @@ var upgradeId = ["Réception de :",
 	"Dépaquetage de la mise à jour de",
 	"Paramétrage de"];
 
+/**
+* Returns an array with all packages to install, null otherwise
+*/
+var listPackages = module.exports.listPackages = function (text){
+  text = text.slice(text.indexOf("...")+3);
+  text = text.slice(0, text.indexOf(", "));
+  var p = text.indexOf(":");
+  if(p === -1){
+    return null;
+  }else{
+  	text = text.slice(p+2);
+    p = text.indexOf(":");
+    if(p!==-1){
+      text = text.slice(p+2);
+      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
+    }else{
+      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
+    }
+    if(text === ''){
+      return null;
+    }else{
+      return text.split(" ");
+    }
+  }
+}
 /**
 * Sets the progress of reading step for upgrade simulation
 */
@@ -54,7 +77,7 @@ var Progress, simulStdout = "";
 var packagesTab, part;
 var simulationProgress = module.exports.simulationProgress = function(stdout,callback){
 	simulStdout += stdout + "\n";
-	packagesTab = aptGet.listPackages(simulStdout);
+	packagesTab = listPackages(simulStdout);
 	if(packagesTab){
 		part = 80/(packagesTab.length*2);
 		packagesTab.forEach(function(Package){

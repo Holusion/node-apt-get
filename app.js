@@ -1,5 +1,7 @@
-var aptGet = require('./index');
-var errorMod = aptGet.ErrorMod;
+var AptGet = require('./index.js');
+var aptGet = new AptGet('sudo');
+var aptGetErr = aptGet.AptGetErr;
+var aptGetProg = aptGet.AptGetProg;
 
 var packages;
 var download;
@@ -15,11 +17,11 @@ var update = aptGet.update(function(err,stderr,data){
 	if(!stderr){
 		update.emit('Finished update');
 	}else{
-		errorMod.errorHandler(stderr,function(errMsg){
+		aptGetErr.errorHandler(stderr,function(errMsg){
 			if(!errMsg){
 				console.log('Error' + errmsg);
 			}else{
-				if(errMsg == "Index Files Not Found"){
+				if(errMsg == "Quelques fichiers d'index n'ont pas été trouvés"){
 					console.log(errMsg + " : Une erreur non fatale s'est produite pendant les mises à jours.");
 					update.emit('Finished update');
 				}else{
@@ -36,12 +38,12 @@ update.on('Finished update', function(){
 		console.log('SIMULATE UPGRADE : ')
 		if(!stderr){
 			console.log(data);
-			packages = aptGet.listPackages(data);
+			packages = aptGetProg.listPackages(data);
 			console.log('Packages to update :');
 			console.log(packages);
 			update.emit('Finished simulation',packages);
 		}else{
-			errorMod.errorHandler(stderr,function(errMsg){
+			aptGetErr.errorHandler(stderr,function(errMsg){
 				if(!errMsg){
 					errMsg = "Error";
 				}
@@ -59,7 +61,7 @@ update.on('Finished simulation',function(packages){
 				console.log(data);
 				update.emit('Finished download');
 			}else{
-				errorMod.errorHandler(stderr,function(errMsg){
+				aptGetErr.errorHandler(stderr,function(errMsg){
 					if(!errMsg){
 						errMsg = "Error";
 					}
@@ -80,7 +82,7 @@ update.on('Finished download',function(){
 			console.log(data);
 			simulate.emit('Finished installation');
 		}else{
-			errorMod.errorHandler(stderr,function(errMsg){
+			aptGetErr.errorHandler(stderr,function(errMsg){
 				if(!errMsg){
 					errMsg = "Error";
 				}
