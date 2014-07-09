@@ -1,7 +1,8 @@
 var fs = require("fs");
 var rewire = require("rewire");
 var expect = require('chai').expect;
-var index = rewire('../index.js');
+var Index = rewire('../index.js');
+var index = new Index('sudo');
 
 describe("test update",function(){
   var upgrade_out;
@@ -13,7 +14,7 @@ describe("test update",function(){
     });
   });
   it('outputs stdout',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = upgrade_out;
       var err = null;
       var ret = 0;
@@ -27,7 +28,7 @@ describe("test update",function(){
     });
   })
   it('returns the error',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = null;
       var ret = 1;
@@ -51,7 +52,7 @@ describe("test simulateUpgrade",function(){
     });
   });
   it('outputs stdout',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = upgrade_out;
       var err = null;
       var ret = 0;
@@ -65,7 +66,7 @@ describe("test simulateUpgrade",function(){
     });
   })
   it('returns the error',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = "error";
       var ret = 0;
@@ -89,7 +90,7 @@ describe("test downloadUpgrade",function(){
     });
   });
   it('outputs stdout',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = upgrade_out;
       var err = null;
       var ret = 0;
@@ -103,7 +104,7 @@ describe("test downloadUpgrade",function(){
     });
   })
   it('returns the error',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = "error";
       var ret = 0;
@@ -127,7 +128,7 @@ describe("test upgrade",function(){
     });
   });
   it('outputs stdout',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = upgrade_out;
       var err = null;
       var ret = 0;
@@ -141,7 +142,7 @@ describe("test upgrade",function(){
     });
   })
   it('returns the error',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = "error";
       var ret = 0;
@@ -157,7 +158,7 @@ describe("test upgrade",function(){
 
 describe("test clean",function(){
   it('outputs stdout',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = null;
       var ret = 0;
@@ -170,7 +171,7 @@ describe("test clean",function(){
     });
   })
   it('returns the error',function(done){
-    index.__set__('exec', function(param, callback){
+    Index.__set__('exec', function(param, callback){
       var out = null;
       var err = "error";
       var ret = 0;

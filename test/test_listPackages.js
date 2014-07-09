@@ -1,6 +1,8 @@
 var fs = require("fs");
 var expect = require('chai').expect;
 var index = require('../index.js');
+var aptGet = new index();
+var aptGetProg = aptGet.AptGetProg;
 
 
 describe("test listPackages",function(){
@@ -16,7 +18,7 @@ describe("test listPackages",function(){
   })
   it('isolates the packages to upgrade',function(){
     var expected_out = ["dbus", "dbus-x11", "libc-dev-bin", "libc6", "libc6-dev", "libdbus-1-3", "locales"];
-    var res = index.listPackages(upgrade_out);
+    var res = aptGetProg.listPackages(upgrade_out);
     expect(res).to.deep.equal(expected_out);
   })
   before(function(done){
@@ -27,7 +29,7 @@ describe("test listPackages",function(){
     })
   })
   it('returns null if the system is up-to-date',function(){
-    var res = index.listPackages(upgrade_not);
+    var res = aptGetProg.listPackages(upgrade_not);
     expect(res).to.be.null;
   })
   before(function(done){
@@ -38,7 +40,7 @@ describe("test listPackages",function(){
     })
   })
   it('returns null if the -s upgrade is running 1',function(){
-    var res = index.listPackages(upgrade_run);
+    var res = aptGetProg.listPackages(upgrade_run);
     expect(res).to.be.null;
   })
   before(function(done){
@@ -49,7 +51,7 @@ describe("test listPackages",function(){
     })
   })
   it('returns null if the -s upgrade is running 2',function(){
-    var res = index.listPackages(upgrade_run);
+    var res = aptGetProg.listPackages(upgrade_run);
     expect(res).to.be.null;
   })
   before(function(done){
@@ -60,7 +62,7 @@ describe("test listPackages",function(){
     })
   })
   it('returns null if the -s upgrade is running 3',function(){
-    var res = index.listPackages(upgrade_run);
+    var res = aptGetProg.listPackages(upgrade_run);
     expect(res).to.be.null;
   })
 })
