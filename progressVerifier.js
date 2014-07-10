@@ -61,41 +61,38 @@ var simulationVerifier = module.exports.simulationVerifier = function(stdout,pac
 	simulationId.forEach(function(Id,ind){
 		index = stdout.indexOf(Id);
 		if(index != -1){
-			index = stdout.indexOf(pack);
-			if(index != -1){
-				callback(pack);
-			}
+			callback(true);
 		}else{
-			callback(null)
+			callback(false)
 		}
 	})
 }
 /**
 * Sends the progress of the upgrade simulation
 */
-var Progress, simulStdout = "";
+var Progress = 0, simulStdout = "";
 var packagesTab, part;
 var simulationProgress = module.exports.simulationProgress = function(stdout,callback){
 	simulStdout += stdout + "\n";
-	packagesTab = listPackages(simulStdout);
-	if(packagesTab){
-		part = 80/(packagesTab.length*2);
-		packagesTab.forEach(function(Package){
-			simulationVerifier(stdout, Package,function(packageName){
-				if(packageName){
+	simulationReading(stdout, function(progress){
+		Progress = progress;
+		if(Progress == 20){
+	    	packagesTab = listPackages(simulStdout);
+	    }
+		callback(progress+'%');
+	})
+	if(Progress >= 20){
+		if(packagesTab == null){
+			packagesTab = listPackages(simulStdout);
+		}else{
+			part = Math.floor(80/(packagesTab.length*2));
+			simulationVerifier(stdout, null,function(packageName){
+				if(packageName==true){
 					Progress = Progress + part;
 					callback(Progress+'%');
-				}else{
-					callback(null);
 				}				
 			});
-		})
-	}
-	if(!packagesTab){
-		simulationReading(stdout, function(progress){
-			Progress = progress;
-			callback(progress+'%');
-		})
+		}
 	}
 }
 

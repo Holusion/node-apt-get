@@ -1,7 +1,8 @@
-var aptGet = require('./index');
+var AptGet = require('./index');
+var aptGet = new AptGet('sudo');
 var fs = require('fs');
 var events = require('events');
-var verifier = aptGet.Verifier;
+var verifier = aptGet.AptGetProg;
 
 var updateChild = new events.EventEmitter();
 var simulChild  = new events.EventEmitter();
@@ -62,14 +63,14 @@ upgradeChild.on('stdout', function(data){
 });
 
 /*File reading*/
-fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
+/*fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
 	console.log('update : ');
 	var tab = data.split("\n");
 	tab.forEach(function(stdout){
 		updateChild.emit('stdout',tab,stdout);
 	});
-});
-updateChild.on('Finished',function(){
+});*/
+//updateChild.on('Finished',function(){
 	fs.readFile("./test/fixtures/s_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade simulation : ');
 		var tab = data.split("\n");
@@ -78,7 +79,7 @@ updateChild.on('Finished',function(){
 		});
 
 	});
-})
+//})
 simulChild.on('Finished', function(){
 	fs.readFile("./test/fixtures/dy_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('download : ');
