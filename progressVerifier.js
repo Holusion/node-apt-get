@@ -71,9 +71,9 @@ var simulationVerifier = module.exports.simulationVerifier = function(stdout,pac
 * Sends the progress of the upgrade simulation
 */
 var Progress = 0, simulStdout = "";
-var packagesTab, part;
+var packagesTab = null, part;
 var simulationProgress = module.exports.simulationProgress = function(stdout,callback){
-	simulStdout += stdout + "\n";
+	simulStdout += stdout;
 	simulationReading(stdout, function(progress){
 		Progress = progress;
 		if(Progress == 20){
@@ -94,6 +94,7 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 			});
 		}
 	}
+	console.log('packagesTab = ' + packagesTab);
 }
 
 /**
