@@ -97,7 +97,7 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 				if(packageName==true){
 					Progress = Progress + part;
 					callback(Progress+'%');
-				}				
+				}
 			});
 		}
 	//}
