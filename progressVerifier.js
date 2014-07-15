@@ -78,7 +78,7 @@ var packagesTab, part;
 var simulationProgress = module.exports.simulationProgress = function(stdout,callback){
 	simulStdout += stdout + "\n";
 	packagesTab = listPackages(simulStdout);
-	if(packagesTab){
+	if(packagesTab!==null){
 		part = 80/(packagesTab.length*2);
 		packagesTab.forEach(function(Package){
 			simulationVerifier(stdout, Package,function(packageName){
@@ -87,7 +87,7 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 					callback(Progress+'%');
 				}else{
 					callback(null);
-				}				
+				}
 			});
 		})
 	}
