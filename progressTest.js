@@ -73,7 +73,7 @@ upgradeChild.on('stdout', function(data){
 		updateChild.emit('stdout',tab,stdout);
 	});
 });
-updateChild.on('Finished',function(){
+updateChild.on('Finished',function(){*/
 	fs.readFile("./test/fixtures/s_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade simulation : ');
 		//console.log(verifier.listPackages(data));
@@ -83,7 +83,7 @@ updateChild.on('Finished',function(){
 		});
 
 	});
-})
+/*})
 simulChild.on('Finished', function(){
 	fs.readFile("./test/fixtures/dy_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('download : ');
@@ -93,7 +93,7 @@ simulChild.on('Finished', function(){
 		});
 	});
 })
-downlChild.on('Finished', function(){*/
+downlChild.on('Finished', function(){
 	fs.readFile("./test/fixtures/upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade : ')
 		var tab = data.split("\n");
@@ -101,4 +101,4 @@ downlChild.on('Finished', function(){*/
 			upgradeChild.emit('stdout',stdout);
 		});
 	});
-/*})*/
+})*/

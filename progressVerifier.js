@@ -17,8 +17,6 @@ var upgradeId = ["Réception de :",
 * Returns an array with all packages to install, null otherwise
 */
 var listPackages = module.exports.listPackages = function (text){
-  text = text.slice(text.indexOf("...")+3);
-  text = text.slice(0, text.indexOf(", "));
   var p = text.indexOf("Les paquets suivants seront mis à jour :");
   if(p === -1){
     return null;
@@ -35,7 +33,7 @@ var listPackages = module.exports.listPackages = function (text){
 }
 
 var lineSearcher = module.exports.lineSearcher = function(text){
-if(text.indexOf("  ")===-1){
+	if(text.indexOf("  ")===-1){
 		return '';
 	}else{
 		var line = text.indexOf('\n');
@@ -77,7 +75,7 @@ var simulationVerifier = module.exports.simulationVerifier = function(stdout,pac
 var Progress = 0, simulStdout = "";
 var packagesTab = null, part;
 var simulationProgress = module.exports.simulationProgress = function(stdout,callback){
-	simulStdout += stdout;
+	simulStdout += '\n'+stdout;
 	simulationReading(stdout, function(progress){
 		Progress = progress;
 		/*if(Progress == 20){
