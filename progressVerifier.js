@@ -27,9 +27,11 @@ var listPackages = module.exports.listPackages = function (text){
     p = text.indexOf(":");
     if(p!==-1){
       text = text.slice(p+2);
-      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
+			text = lineSearcher(text);
+			text = text.slice(0, text.lastIndexOf(' '));
     }else{
-      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
+			text = lineSearcher(text);
+			text.slice(0, text.lastIndexOf(' '));
     }
     if(text === ''){
       return null;
@@ -37,6 +39,15 @@ var listPackages = module.exports.listPackages = function (text){
       return text.split(" ");
     }
   }
+}
+
+var lineSearcher = module.exports.lineSearcher = function(text){
+if(text.indexOf("  ")===-1){
+		return '';
+	}else{
+		var line = text.indexOf('\n');
+		return text.slice(text.indexOf("  ")+2, line) + ' ' + lineSearcher(text.slice(line+1));
+	}
 }
 /**
 * Sets the progress of reading step for upgrade simulation

@@ -5,7 +5,8 @@ Calcul de la mise à jour... Fait
 Les paquets suivants seront ENLEVÉS :
   libtirpc1 nfs-common rpcbind
 Les paquets suivants seront mis à jour :
-  dbus dbus-x11 libc-dev-bin libc6 libc6-dev libdbus-1-3 locales
+  dbus dbus-x11 libc-dev-bin libc6
+  libc6-dev libdbus-1-3 locales
 7 mis à jour, 0 nouvellement installés, 3 à enlever et 0 non mis à jour.
 Remv nfs-common [1:1.2.6-4]
 Remv rpcbind [0.2.0-8]
