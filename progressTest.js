@@ -20,34 +20,37 @@ updateChild.on('stdout', function(tabData, data){
 })
 /*Simulation Progress*/
 simulChild.on('stdout',function(data){
+	console.log(data);
 	verifier.simulationProgress(data,function(progress){
 		if(progress){
 			console.log(progress);
-			if(progress == '100%'){
+			/*if(progress == '100%'){
 				simulChild.emit('Finished')
-			}
+			}*/
 		}
 	})
 });
 
 /*Download Progress*/
-var i=0; var packages = ['gnupg','gpgv'];
+var i=0; var packages = ['dbus', 'dbus-x11', 'libdbus-1-3', 'libc-dev-bin', 'libc6', 'libc6-dev', 'locales', 'libjpeg8', 'libopenobex1', 'mobile-broadband-provider-info', 'base-files'];
 downlChild.on('stdout',function(data){
+	console.log(data);
 	verifier.downloadProgress(data,packages,function(packagename,progress){
 		if(packagename && progress){
 			console.log(packagename + ' = ' + progress);
-			if(progress == '100%'){
+			/*if(progress == '100%'){
 				i=i+1;
 			}
 			if(i == packages.length){
 				downlChild.emit('Finished');
-			}
+			}*/
 		}
 	})
 });
 
 /*Upgrade Progress*/
 var j=0;
+packages = ['gnupg', 'gpgv'];
 upgradeChild.on('stdout', function(data){
 	verifier.upgradeProgress(data,packages,function(packagename,progress){
 		if(packagename && progress){
@@ -63,7 +66,7 @@ upgradeChild.on('stdout', function(data){
 });
 
 /*File reading*/
-fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
+/*fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
 	console.log('update : ');
 	var tab = data.split("\n");
 	tab.forEach(function(stdout){
@@ -73,6 +76,7 @@ fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
 updateChild.on('Finished',function(){
 	fs.readFile("./test/fixtures/s_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade simulation : ');
+		//console.log(verifier.listPackages(data));
 		var tab = data.split("\n");
 		tab.forEach(function(stdout){
 			simulChild.emit('stdout',stdout);
@@ -89,7 +93,7 @@ simulChild.on('Finished', function(){
 		});
 	});
 })
-downlChild.on('Finished', function(){
+downlChild.on('Finished', function(){*/
 	fs.readFile("./test/fixtures/upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade : ')
 		var tab = data.split("\n");
@@ -97,4 +101,4 @@ downlChild.on('Finished', function(){
 			upgradeChild.emit('stdout',stdout);
 		});
 	});
-})
+/*})*/

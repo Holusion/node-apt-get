@@ -9,9 +9,9 @@ var downloadId = ["Lecture des listes de paquets",
 	"Les paquets suivants seront mis à jour :",
 	"d'espace disque supplémentaires seront utilisés"];
 var upgradeId = ["Réception de :",
-	"Préparation du remplacement de",
-	"Dépaquetage de la mise à jour de",
-	"Paramétrage de"];
+	"Préparation du remplacement",
+	"Dépaquetage de la mise à jour",
+	"Paramétrage"];
 
 /**
 * Returns an array with all packages to install, null otherwise
@@ -19,24 +19,28 @@ var upgradeId = ["Réception de :",
 var listPackages = module.exports.listPackages = function (text){
   text = text.slice(text.indexOf("...")+3);
   text = text.slice(0, text.indexOf(", "));
-  var p = text.indexOf(":");
+  var p = text.indexOf("Les paquets suivants seront mis à jour :");
   if(p === -1){
     return null;
   }else{
-  	text = text.slice(p+2);
-    p = text.indexOf(":");
-    if(p!==-1){
-      text = text.slice(p+2);
-      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
-    }else{
-      text = text.slice(text.indexOf("  ")+2, text.indexOf('\n'));
-    }
+    text = text.slice(p+41);
+	text = lineSearcher(text);
+	text = text.slice(0, text.lastIndexOf(' '));
     if(text === ''){
       return null;
     }else{
       return text.split(" ");
     }
   }
+}
+
+var lineSearcher = module.exports.lineSearcher = function(text){
+if(text.indexOf("  ")===-1){
+		return '';
+	}else{
+		var line = text.indexOf('\n');
+		return text.slice(text.indexOf("  ")+2, line) + ' ' + lineSearcher(text.slice(line+1));
+	}
 }
 /**
 * Sets the progress of reading step for upgrade simulation
@@ -76,15 +80,18 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 	simulStdout += stdout;
 	simulationReading(stdout, function(progress){
 		Progress = progress;
-		if(Progress == 20){
+		/*if(Progress == 20){
 	    	packagesTab = listPackages(simulStdout);
-	    }
+	    }*/
 		callback(progress+'%');
 	})
-	if(Progress >= 20){
-		if(packagesTab == null){
+	//if(Progress >= 20){
+		//if(packagesTab == null){
+		if(stdout.indexOf('mis à jour')!=-1 && stdout.indexOf('nouvellement installés')!=-1 && stdout.indexOf('à enlever')!=-1){
 			packagesTab = listPackages(simulStdout);
-		}else{
+		}
+		//}else{
+		if(packagesTab != null){
 			part = Math.floor(80/(packagesTab.length*2));
 			simulationVerifier(stdout, null,function(packageName){
 				if(packageName==true){
@@ -93,7 +100,7 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 				}				
 			});
 		}
-	}
+	//}
 	console.log('packagesTab = ' + packagesTab);
 }
 
@@ -101,26 +108,36 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 * Sets the progress of reading step for download and upgrade
 */
 var downloadReading = module.exports.downloadReading = function(stdout,callback){
-	downloadId.forEach(function(element, ind){
+	for(var i=0;i<downloadId.length;i++){
+		element = downloadId[i];
 		var index = stdout.indexOf(element);
 		if(index != -1){
-			callback((ind+1)*10);
+			if(i == 4){
+				callback('en attente...')
+			}else{
+				callback('Préparation du téléchargement...');
+			}
 		}
-	});
+	}
 }
 /**
 * Sets the progress for each package in the next step
 */
+var downPacks = [];
 var downloadVerifier = module.exports.downloadVerifier = function(stdout,packages,callback){
 	var index;
 	index = stdout.indexOf("Réception de :");
 	if(index != -1){
 		packages.forEach(function(Package){
 			index = stdout.indexOf(Package);
-			if(index != -1){
-				callback(Package);
+			if(index != -1 && downPacks.indexOf(Package) == -1){
+				downPacks.push(Package);
+				callback(Package,'Téléchargement terminé');
 			}
 		})
+	}
+	if(downPacks.length == packages.length){
+		downPacks = [];
 	}
 }
 /**
@@ -131,18 +148,12 @@ var downloadProgress = module.exports.downloadProgress = function(stdout,package
 	downloadReading(stdout,function(progress){
 		Prog = progress;
 		packages.forEach(function(packageN){
-			callback(packageN,progress+'%')
+			callback(packageN,progress)
 		})
 	});
-	if(Prog == 50){
-		downloadVerifier(stdout,packages,function(packageN){
-			packages.forEach(function(element){
-				if(element == packageN){
-					callback(packageN,'100%');
-				}else{
-					callback(null,null)
-				}
-			})
+	if(Prog == 'en attente...'){
+		downloadVerifier(stdout,packages,function(packageN,state){
+			callback(packageN,state);
 		})
 	}
 }
@@ -151,14 +162,19 @@ var downloadProgress = module.exports.downloadProgress = function(stdout,package
 * Sets the progress for each package in the next step
 */
 var upgradeVerifier = module.exports.upgradeVerifier = function(stdout,packages,callback){
-	var index;
+	var index; var msg;
 	upgradeId.forEach(function(element, Ind){
 		index = stdout.indexOf(element);
 		if(index != -1){
 			packages.forEach(function(Package){
 				index = stdout.indexOf(Package);
 				if(index != -1){
-					callback(Package,(Ind+1)*12.5)
+					if(Ind == 0){
+						msg = 'Réception de la source'
+					}else{
+						msg = element;
+					}
+					callback(Package,msg)
 				}
 			});
 		}
@@ -167,26 +183,19 @@ var upgradeVerifier = module.exports.upgradeVerifier = function(stdout,packages,
 /**
 * Sends the progress for each package in upgrade
 */
-var Progr;
 var upgradeProgress = module.exports.upgradeProgress = function(stdout,packages,callback){
 	downloadReading(stdout,function(progress){
-		Progr = progress;
 		packages.forEach(function(packageN){
-			callback(packageN,progress+'%');
+			callback(packageN,"Préparation de l'installation...");
 		})
 	});
-	if(Progr == 50){
 		upgradeVerifier(stdout,packages,function(packageN,progress){
 			packages.forEach(function(element){
 				if(element == packageN){
-					progress = Progr+progress;
-					callback(packageN,progress+'%');
-				}else{
-					callback(null, null);
+					callback(packageN,progress);
 				}
 			})
 		})
-	}
 }
 
 /**
