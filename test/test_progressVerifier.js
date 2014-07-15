@@ -46,15 +46,15 @@ describe("test upgrade simulation progress", function(){
 });
 describe("test download progress", function(){
 	var packages = ['test1','test2'];
-	it('should set progress to 50% for each package',function(){
+	it('should set \'En cours...\' for each package',function(){
 		aptGetProg.downloadProgress("Après cette opération, 375 ko d'espace disque supplémentaires seront utilisés.", packages,
 			function(packagename,progress){
-				expect(progress).to.be.equal('50%');
+				expect(progress).to.be.equal('En cours...');
 			})
 	})
 	it('should returns the right name of package', function(done){
 		aptGetProg.downloadVerifier("Réception de : 1 http://security.debian.org/ wheezy/updates/main test1 amd64 1.4.12-7+deb7u4 [227 kB]", 
-			packages, function(packagename){
+			packages, function(packagename,progress){
 				expect(packagename).to.be.equal('test1');
 				done();
 		});
@@ -62,12 +62,11 @@ describe("test download progress", function(){
 })
 describe("test uprade progress", function(){
 	var packages = ['test1','test2'];
-	it('should set progress to 30% for each package',function(){
+	it('should set progress \'Préparation de l\'installation...\' for each package',function(){
 		aptGetProg.upgradeProgress("Lecture des informations d'état... Fait",packages,
 			function(packagename,progress){
 				console.log(progress);
-				expect(progress).to.be.equal('30%');
+				expect(progress).to.be.equal('Préparation de l\'installation...');
 		})
 	});
 })
-

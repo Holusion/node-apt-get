@@ -24,9 +24,9 @@ simulChild.on('stdout',function(data){
 	verifier.simulationProgress(data,function(progress){
 		if(progress){
 			console.log(progress);
-			/*if(progress == '100%'){
+			if(progress == '100%'){
 				simulChild.emit('Finished')
-			}*/
+			}
 		}
 	})
 });
@@ -38,12 +38,6 @@ downlChild.on('stdout',function(data){
 	verifier.downloadProgress(data,packages,function(packagename,progress){
 		if(packagename && progress){
 			console.log(packagename + ' = ' + progress);
-			/*if(progress == '100%'){
-				i=i+1;
-			}
-			if(i == packages.length){
-				downlChild.emit('Finished');
-			}*/
 		}
 	})
 });
@@ -66,14 +60,14 @@ upgradeChild.on('stdout', function(data){
 });
 
 /*File reading*/
-/*fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
+fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
 	console.log('update : ');
 	var tab = data.split("\n");
 	tab.forEach(function(stdout){
 		updateChild.emit('stdout',tab,stdout);
 	});
 });
-updateChild.on('Finished',function(){*/
+updateChild.on('Finished',function(){
 	fs.readFile("./test/fixtures/s_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade simulation : ');
 		//console.log(verifier.listPackages(data));
@@ -83,7 +77,7 @@ updateChild.on('Finished',function(){*/
 		});
 
 	});
-/*})
+})
 simulChild.on('Finished', function(){
 	fs.readFile("./test/fixtures/dy_upgrade.out",{encoding:"UTF-8"},function(err,data){
 		console.log('download : ');
@@ -101,4 +95,4 @@ downlChild.on('Finished', function(){
 			upgradeChild.emit('stdout',stdout);
 		});
 	});
-})*/
+})

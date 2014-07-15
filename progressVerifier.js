@@ -87,6 +87,7 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 		//if(packagesTab == null){
 		if(stdout.indexOf('mis à jour')!=-1 && stdout.indexOf('nouvellement installés')!=-1 && stdout.indexOf('à enlever')!=-1){
 			packagesTab = listPackages(simulStdout);
+			simulStdout = "";
 		}
 		//}else{
 		if(packagesTab != null){
@@ -111,7 +112,7 @@ var downloadReading = module.exports.downloadReading = function(stdout,callback)
 		var index = stdout.indexOf(element);
 		if(index != -1){
 			if(i == 4){
-				callback('en attente...')
+				callback('En cours...')
 			}else{
 				callback('Préparation du téléchargement...');
 			}
@@ -149,7 +150,7 @@ var downloadProgress = module.exports.downloadProgress = function(stdout,package
 			callback(packageN,progress)
 		})
 	});
-	if(Prog == 'en attente...'){
+	if(Prog == 'En cours...'){
 		downloadVerifier(stdout,packages,function(packageN,state){
 			callback(packageN,state);
 		})
@@ -168,7 +169,7 @@ var upgradeVerifier = module.exports.upgradeVerifier = function(stdout,packages,
 				index = stdout.indexOf(Package);
 				if(index != -1){
 					if(Ind == 0){
-						msg = 'Réception de la source'
+						msg = 'Réception du paquet'
 					}else{
 						msg = element;
 					}
