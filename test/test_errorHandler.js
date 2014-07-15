@@ -15,7 +15,7 @@ describe("test errorHandler", function(){
       expect(err).to.deep.equal('Permission non accordée');
     })
   })
-it("returns 'Le gestionnaire de paquet est temporairement indisponible...'", function(){
+  it("returns 'Le gestionnaire de paquet est temporairement indisponible...'", function(){
     aptGetErr.errorHandler("11: Ressource temporairement non disponible", function(err){
       expect(err).to.deep.equal("Le gestionnaire de paquet est temporairement indisponible...");
     })

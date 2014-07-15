@@ -1,7 +1,8 @@
-var aptGet = require('./index');
+var AptGet = require('./index');
+var aptGet = new AptGet('sudo');
 var fs = require('fs');
 var events = require('events');
-var verifier = aptGet.Verifier;
+var verifier = aptGet.AptGetProg;
 
 var updateChild = new events.EventEmitter();
 var simulChild  = new events.EventEmitter();
