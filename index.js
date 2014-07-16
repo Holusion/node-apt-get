@@ -22,7 +22,7 @@ AptGet.prototype.simulateUpgrade = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get -s dist-upgrade', function(err,stdout,stderr){
 		if(err){
-			err="Upgrade simulation error";
+			err="Erreur de simulation des mises à jour";
 		}
 		callback(err,stderr,stdout);
 	});
@@ -37,7 +37,7 @@ AptGet.prototype.update = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get update', function(err, stdout, stderr){
 		if(stderr){
-			err="Update error";
+			err="Erreur de téléchargement des mises àjour";
 		}
 		callback(err,stderr, stdout);
 	});
@@ -51,7 +51,7 @@ AptGet.prototype.downloadUpgrade = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get -dy dist-upgrade', function(err,stdout,stderr){
 		if(err){
-			err="Download error";
+			err="Erreur de téléchargement des paquets";
 		}
 		callback(err,stderr,stdout);
 	});
@@ -65,7 +65,7 @@ AptGet.prototype.upgrade = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get -y dist-upgrade', function(err,stdout,stderr){
 		if(err){
-			err="Upgrade installation error";
+			err="Erreur d'installation des paquets";
 		}
 		callback(err,stderr,stdout);
 	});
@@ -80,7 +80,7 @@ AptGet.prototype.clean = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get clean', function(err,stdout,stderr){
 		if(err){
-			err = "Cover clean error";
+			err = "Erreur dans le nettoyage du cache";
 		}
 		callback(err,stderr,stdout);
 	});
