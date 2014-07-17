@@ -36,7 +36,7 @@ describe("test update",function(){
     });
     index.update(function(err, stderr, data){
       expect(data).to.be.null;
-      expect(err).to.deep.equal("Update error");
+      expect(err).to.deep.equal("Erreur de téléchargement des mises à jour");
       done();
     });
   })
@@ -74,7 +74,7 @@ describe("test simulateUpgrade",function(){
     });
     index.simulateUpgrade(function(err,stderr, data){
       expect(data).to.be.null;
-      expect(err).to.deep.equal("Upgrade simulation error");
+      expect(err).to.deep.equal("Erreur de simulation des mises à jour");
       done();
     });
   })
@@ -112,7 +112,7 @@ describe("test downloadUpgrade",function(){
     });
     index.downloadUpgrade(function(err,stderr, data){
       expect(data).to.be.null;
-      expect(err).to.deep.equal("Download error");
+      expect(err).to.deep.equal("Erreur de téléchargement des paquets");
       done();
     });
   })
@@ -150,7 +150,7 @@ describe("test upgrade",function(){
     });
     index.upgrade(function(err,stderr, data){
       expect(data).to.be.null;
-      expect(err).to.deep.equal("Upgrade installation error");
+      expect(err).to.deep.equal("Erreur d'installation des paquets");
       done();
     });
   })
@@ -179,7 +179,7 @@ describe("test clean",function(){
     });
     index.clean(function(err,stderr, data){
       expect(data).to.be.null;
-      expect(err).to.deep.equal("Cover clean error");
+      expect(err).to.deep.equal("Erreur dans le nettoyage du cache");
       done();
     });
   })

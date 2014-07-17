@@ -66,3 +66,14 @@ describe("test listPackages",function(){
     expect(res).to.be.null;
   })
 })
+
+describe('Test listNewPackages', function(){
+  it('Get only new packages to install',function(done){
+    fs.readFile("test/fixtures/s_upgrade_newPacks.out",{encoding:"UTF-8"},function(err,data){
+      var newInstalledPacks = aptGetProg.listNewPackages(data);
+      expect(newInstalledPacks).to.deep.equal(["indicator-application", "libappindicator1", "libappindicator3-1", "libdbusmenu-glib4",
+      "libdbusmenu-gtk3-4", "libdbusmenu-gtk4", "libindicator3-7", "libindicator7"]);
+      done();
+    });
+  })
+})

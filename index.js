@@ -37,7 +37,7 @@ AptGet.prototype.update = function(callback){
 	var self= this;
 	var child = exec(self.sudo+'apt-get update', function(err, stdout, stderr){
 		if(stderr){
-			err="Erreur de téléchargement des mises àjour";
+			err="Erreur de téléchargement des mises à jour";
 		}
 		callback(err,stderr, stdout);
 	});

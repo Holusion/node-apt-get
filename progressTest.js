@@ -68,9 +68,10 @@ fs.readFile("./test/fixtures/update.out",{encoding:"UTF-8"},function(err,data){
 	});
 });
 updateChild.on('Finished',function(){
-	fs.readFile("./test/fixtures/s_upgrade.out",{encoding:"UTF-8"},function(err,data){
+	fs.readFile("./test/fixtures/s_upgrade_newPacks.out",{encoding:"UTF-8"},function(err,data){
 		console.log('upgrade simulation : ');
-		//console.log(verifier.listPackages(data));
+		console.log(verifier.listPackages(data));
+		console.log(verifier.listNewPackages(data));
 		var tab = data.split("\n");
 		tab.forEach(function(stdout){
 			simulChild.emit('stdout',stdout);

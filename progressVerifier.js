@@ -32,6 +32,22 @@ var listPackages = module.exports.listPackages = function (text){
   }
 }
 
+var listNewPackages = module.exports.listNewPackages = function(text){
+	var p = text.indexOf("Les NOUVEAUX paquets suivants seront installés :");
+  if(p === -1){
+    return null;
+  }else{
+    text = text.slice(p+49, text.indexOf("Les paquets suivants seront mis à jour :"));
+	text = lineSearcher(text);
+	text = text.slice(0, text.lastIndexOf(' '));
+    if(text === ''){
+      return null;
+    }else{
+      return text.split(" ");
+    }
+  }
+}
+
 var lineSearcher = module.exports.lineSearcher = function(text){
 	if(text.indexOf("  ")===-1){
 		return '';
@@ -87,6 +103,12 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 		//if(packagesTab == null){
 		if(stdout.indexOf('mis à jour')!=-1 && stdout.indexOf('nouvellement installés')!=-1 && stdout.indexOf('à enlever')!=-1){
 			packagesTab = listPackages(simulStdout);
+			var NewPacks = listNewPackages(simulStdout);
+			if(NewPacks !== null){
+				for(var i=0;i<NewPacks.length;i++){
+					packagesTab.push(NewPacks[i]);
+				}
+			}
 			simulStdout = "";
 		}
 		//}else{

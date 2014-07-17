@@ -1,0 +1,27 @@
+Lecture des listes de paquets...
+Construction de l'arbre des dépendances...
+Lecture des informations d'état...
+Les NOUVEAUX paquets suivants seront installés :
+  indicator-application libappindicator1 libappindicator3-1 libdbusmenu-glib4
+  libdbusmenu-gtk3-4 libdbusmenu-gtk4 libindicator3-7 libindicator7
+Les paquets suivants seront mis à jour :
+  google-chrome-stable
+1 mis à jour, 8 nouvellement installés, 0 à enlever et 0 non mis à jour.
+Inst libdbusmenu-glib4 (0.6.2-1 Debian:7.6/stable [i386])
+Inst libdbusmenu-gtk4 (0.6.2-1 Debian:7.6/stable [i386])
+Inst libindicator7 (0.5.0-1 Debian:7.6/stable [i386])
+Inst libappindicator1 (0.4.92-2 Debian:7.6/stable [i386])
+Inst google-chrome-stable [35.0.1916.153-1] (36.0.1985.125-1 Google:1.0/stable [i386])
+Inst libdbusmenu-gtk3-4 (0.6.2-1 Debian:7.6/stable [i386])
+Inst libindicator3-7 (0.5.0-1 Debian:7.6/stable [i386])
+Inst libappindicator3-1 (0.4.92-2 Debian:7.6/stable [i386])
+Inst indicator-application (0.5.0-1 Debian:7.6/stable [i386])
+Conf libdbusmenu-glib4 (0.6.2-1 Debian:7.6/stable [i386])
+Conf libdbusmenu-gtk4 (0.6.2-1 Debian:7.6/stable [i386])
+Conf libindicator7 (0.5.0-1 Debian:7.6/stable [i386])
+Conf libappindicator1 (0.4.92-2 Debian:7.6/stable [i386])
+Conf google-chrome-stable (36.0.1985.125-1 Google:1.0/stable [i386])
+Conf libdbusmenu-gtk3-4 (0.6.2-1 Debian:7.6/stable [i386])
+Conf libindicator3-7 (0.5.0-1 Debian:7.6/stable [i386])
+Conf libappindicator3-1 (0.4.92-2 Debian:7.6/stable [i386])
+Conf indicator-application (0.5.0-1 Debian:7.6/stable [i386])
