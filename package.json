@@ -1,6 +1,6 @@
 {
 	"name": "apt-get",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": false,
 	"homepage":"https://github.com/Holusion/node-apt-get",
 	"keywords":["apt","apt-get","update","upgrade","debian","ubuntu"],
