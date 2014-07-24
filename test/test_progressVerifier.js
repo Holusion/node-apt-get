@@ -2,7 +2,7 @@ var fs = require("fs");
 var events = require('events');
 var expect = require('chai').expect;
 var index = require('../index.js');
-var aptGet = new index('sudo');
+var aptGet = new index('sudo -n');
 var aptGetProg = aptGet.AptGetProg;
 
 describe("test update Progress", function(){

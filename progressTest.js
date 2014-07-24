@@ -1,5 +1,5 @@
 var AptGet = require('./index');
-var aptGet = new AptGet('sudo');
+var aptGet = new AptGet('sudo -n');
 var fs = require('fs');
 var events = require('events');
 var verifier = aptGet.AptGetProg;

@@ -1,5 +1,5 @@
 var AptGet = require('./index.js');
-var aptGet = new AptGet('sudo');
+var aptGet = new AptGet('sudo -n');
 var aptGetErr = aptGet.AptGetErr;
 var aptGetProg = aptGet.AptGetProg;
 
