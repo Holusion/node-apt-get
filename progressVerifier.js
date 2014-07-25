@@ -7,7 +7,7 @@ var downloadId = ["Lecture des listes de paquets",
 	"Construction de l'arbre des dépendances",
 	"Lecture des informations d'état",
 	"Les paquets suivants seront mis à jour :",
-	"d'espace disque supplémentaires seront utilisés"];
+	"d'espace disque"];
 var upgradeId = ["Réception de :",
 	"Préparation du remplacement",
 	"Dépaquetage de la mise à jour",
@@ -129,16 +129,18 @@ var simulationProgress = module.exports.simulationProgress = function(stdout,cal
 * Sets the progress of reading step for download and upgrade
 */
 var downloadReading = module.exports.downloadReading = function(stdout,callback){
+	var index;
 	for(var i=0;i<downloadId.length;i++){
 		element = downloadId[i];
-		var index = stdout.indexOf(element);
+		index = stdout.indexOf(element);
 		if(index != -1){
-			if(i == 4){
-				callback('En cours...')
-			}else{
+			if(i != 4 && stdout.indexOf(downloadId[4]) == -1){
 				callback('Préparation du téléchargement...');
 			}
 		}
+	}
+	if(stdout.indexOf(downloadId[4])!=-1){
+		callback('En cours...');
 	}
 }
 /**
@@ -158,6 +160,7 @@ var downloadVerifier = module.exports.downloadVerifier = function(stdout,package
 		})
 	}
 	if(downPacks.length == packages.length){
+		console.log('all packages downloaded')
 		downPacks = [];
 	}
 }
