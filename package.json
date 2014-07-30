@@ -1,5 +1,6 @@
 {
 	"name": "apt-get",
+	"description": "apt-get wrapper for node js. Require root auth for most operations",
 	"version": "0.1.0",
 	"private": false,
 	"homepage":"https://github.com/Holusion/node-apt-get",
